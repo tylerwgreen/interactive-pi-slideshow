@@ -10,7 +10,7 @@
 Create symbolic links
 
 ```
-ls -s ~/saguaro-man/desktop/name-of-file.desktop ~/Desktop/name-of-file.desktop
+ln -s ~/saguaro-man/desktop/name-of-file.desktop ~/Desktop/name-of-file.desktop
 ```
 
 ### Auto Start & Disable Screen Saver
