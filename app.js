@@ -69,6 +69,12 @@ logger.options.stream = accessLogStream;
 app.use(morgan(logger.format, logger.options))
 // timeout
 app.use(timeout(getTimeoutSeconds()));
+// mobile Usear Agent to force touch controls
+app.use(function(req, res, next){
+	// console.log('mobile header');
+	res.header('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1')
+	next();
+});
 // !!! must be last middleware !!!
 app.use(haltOnTimedout);
 function haltOnTimedout(req, res, next){

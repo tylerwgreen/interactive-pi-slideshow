@@ -87,17 +87,18 @@ jQuery(function($){
 				configure:	function(){
 					console.log('app.gallery.galleria.configure');
 					Galleria.configure({
-						// showCounter: false,
+						showCounter: false,
 						// showInfo: false,
 						// initialTransition: 'fade',
 						// debug: false,
 						// responsive: true,
-						// transitionSpeed: 250,
+						transitionSpeed: 5000,
 						// trueFullscreen: true,
 						// fullscreenDoubleTap: false,
 						// lightbox: false,
 						// maxScaleRatio: 1,
 						// idleMode: false,
+						swipe: 'enforced',
 						/* extend: function(options) {
 							var galleria = this;
 							
