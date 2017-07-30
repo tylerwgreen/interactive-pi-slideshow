@@ -99,6 +99,8 @@ jQuery(function($){
 						// maxScaleRatio: 1,
 						// idleMode: false,
 						swipe: 'enforced',
+						TOUCH:	true,
+						MOBILE:	true,
 						/* extend: function(options) {
 							var galleria = this;
 							

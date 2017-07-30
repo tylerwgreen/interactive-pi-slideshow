@@ -31,10 +31,11 @@ var doc    = window.document,
     M = Math,
     F = function(){},
     FALSE = function() { return false; },
-    MOBILE = !(
+    /* MOBILE = !(
         ( window.screen.width > 1279 && window.devicePixelRatio == 1 ) || // there are not so many mobile devices with more than 1280px and pixelRatio equal to 1 (i.e. retina displays are equal to 2...)
         ( window.screen.width > 1000 && window.innerWidth < (window.screen.width * .9) ) // this checks in the end if a user is using a resized browser window which is not common on mobile devices
-    ),
+    ), */
+	MOBILE = true,
     IE = (function() {
 
         var v = 3,
@@ -5661,7 +5662,8 @@ $.extend( Galleria, {
     IPHONE:  /iphone/.test( NAV ),
     IPAD:    /ipad/.test( NAV ),
     ANDROID: /android/.test( NAV ),
-    TOUCH:   ( 'ontouchstart' in doc ) && MOBILE // rule out false positives on Win10
+    // TOUCH:   ( 'ontouchstart' in doc ) && MOBILE // rule out false positives on Win10
+    TOUCH:   true
 
 });
 
