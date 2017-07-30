@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# autorun from ~/.config/lxsession/LXDE-pi/autostart
+
+APPS=/home/pi/interactive-pi-slideshow/apps/
+LOG=/logs/startup.log
+NOW=$(date +"%y-%m-%d %H:%M:%S")
+
+# Apps (directory names)
+#APP=video-recorder
+APP=media-player
+
+STARTUP=$APPS$APP/bin/startup
+LOGFILE=$APPS$APP$LOG
+
+# log
+echo "$NOW|executing: $STARTUP" | tee -a $LOGFILE
+
+# run app startup
+#$STARTUP
+
+# open terminal and run command for app startup
+lxterminal -e $STARTUP
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+APP_DIR=/home/pi/saguaro-man/apps/media-player
+echo "#bash - Media player startup killing node"
+killall node
+echo "#bash - Media player startup killing chrome"
+killall chromium-browser
+echo "#bash - Media player startup killing mpg123"
+killall mpg123
+echo "#bash - Media player startup killing omxplayer"
+killall omxplayer
+killall omxplayer.bin
+echo "#bash - Media player startup starting node"
+# add & to the end of your command to tell bash to fork the process off in the background
+node $APP_DIR/app.js &
+echo "#bash - Media player startup starting chrome"
+echo "#bash - Media player startup please wait..."
+chromium-browser -incognito --kiosk 127.0.0.1:5000
