@@ -87,10 +87,10 @@ jQuery(function($){
 				configure:	function(){
 					console.log('app.gallery.galleria.configure');
 					Galleria.configure({
+						debug: true,
 						showCounter: false,
 						// showInfo: false,
 						// initialTransition: 'fade',
-						// debug: false,
 						// responsive: true,
 						transitionSpeed: 5000,
 						// trueFullscreen: true,
@@ -99,12 +99,13 @@ jQuery(function($){
 						// maxScaleRatio: 1,
 						// idleMode: false,
 						swipe: 'enforced',
-						TOUCH:	true,
-						MOBILE:	true,
-						/* extend: function(options) {
+						// TOUCH:	true,
+						// MOBILE:	true,
+						extend: function(options) {
 							var galleria = this;
 							
-							galleria.bind('loadfinish', function(e) {
+							// galleria.unbind();
+							/* galleria.bind('loadfinish', function(e) {
 								if (typeof e.galleriaData.title == 'undefined') {
 									// title.hide();
 								} else {
@@ -117,8 +118,8 @@ jQuery(function($){
 									// description.text(e.galleriaData.description);
 									// description.show();
 								}
-							});
-						} */
+							}); */
+						}
 					});
 				},
 				loadTheme:	function(){

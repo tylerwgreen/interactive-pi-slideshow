@@ -4,4 +4,42 @@
 	top:0;
 	width:@display-width;
 	height:@display-height;
+	.galleria-theme-classic{
+		.galleria-info{
+			left: 0;
+			top:0;
+			width: 100%;
+			height: 100%;
+			.infoClose(){
+				width:50px;
+				height:50px;
+				line-height:50px;
+				font-size:50px;
+				left:initial;
+				top:10px;
+				right:10px;
+				background-image: none;
+				&:before{
+					font-family:'interactive-slideshow';
+				}
+			}
+			.galleria-info-link{
+				.infoClose();
+				&:before{
+					content:'\61';
+				}
+			}
+			.galleria-info-close{
+				.infoClose();
+				&:before{
+					content:'\66';
+				}
+			}
+			.galleria-info-text{
+				width: 100%;
+				height: 100%;
+				background-color:@grey;
+			}
+		}
+	}
 }
