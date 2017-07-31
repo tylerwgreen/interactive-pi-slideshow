@@ -15,15 +15,11 @@ var paths	= {
 	logs:	'/logs/',
 	web:	'/web/',
 };
-// var styling	= false;
-var styling	= true;
 
 /**
  * Load models
  */
-/* var MediaPlayer		= require(path.join(__dirname, paths.models, 'MediaPlayer'));
-if(!styling)
-	MediaPlayer.init(); */
+var Projector		= require(path.join(__dirname, paths.models, 'Projector'));
 
 // app settings
 /**
@@ -96,13 +92,24 @@ app.get('/', function(req, res, next){
 	console.log('/');
 	res.sendFile(path.join(__dirname, paths.views, 'index.html'));
 });
-/** Expressions */
-/* app.post('/apps/expressions/play', function(req, res, next){
-	console.log('/apps/expressions/play');
-	// console.log(req.params);
-	if(styling){
-		setTimeout(function(){
-			console.log('/apps/expressions - success');
+/** Projector */
+app.post('/projector/project/:fileName', function(req, res, next){
+	console.log('/projector/project/:' + req.params.fileName);
+	Projector.project({
+		fileName:	req.params.fileName,
+		errorCB:	function(error){
+			console.log('/projector/project - errorCB');
+			console.log(error);
+			if(res.headersSent){
+				res.end('{errors:"error"}');
+			}else{
+				res.status(500).json({
+					errors: ['projector/project failed'],
+				});
+			}
+		},
+		successCB:	function(){
+			console.log('/projector/project - successCB');
 			if(res.headersSent){
 				res.end('{errors:"error"}');
 			}else{
@@ -112,35 +119,14 @@ app.get('/', function(req, res, next){
 					}
 				});
 			}
-		}, 5000);
-	}else{
-		MediaPlayer.expressions.play({
-			errorCB:	function(error){
-				console.log('/apps/expressions/play - errorCB');
-				console.log(error);
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.status(500).json({
-						errors: ['Expressions play failed'],
-					});
-				}
-			},
-			successCB:	function(){
-				console.log('/apps/expressions/play - successCB');
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.json({
-						data:	{
-							success:	true,
-						}
-					});
-				}
-			}
-		});
-	}
-}); */
+		}
+	});
+	res.json({
+		data:	{
+			success:	true,
+		}
+	});
+});
 /** Puppet People */
 /* app.post('/apps/puppet-people/play', function(req, res, next){
 	console.log('/apps/puppet-people/play');
@@ -234,43 +220,31 @@ app.get('/', function(req, res, next){
 app.post('/quit', function(req, res, next){
 	console.log('/quit');
 	// console.log(req.params);
-	if(styling){
-		if(res.headersSent){
-			res.end('{errors:"error"}');
-		}else{
-			res.json({
-				data:	{
-					success:	true,
-				}
-			});
-		}
-	}else{
-		MediaPlayer.quit({
-			errorCB:	function(error){
-				console.log('/quit - errorCB');
-				console.log(error);
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.status(500).json({
-						errors: ['Quit failed'],
-					});
-				}
-			},
-			successCB:	function(){
-				console.log('/quit - successCB');
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.json({
-						data:	{
-							success:	true,
-						}
-					});
-				}
+	/* Projector.quit({
+		errorCB:	function(error){
+			console.log('/quit - errorCB');
+			console.log(error);
+			if(res.headersSent){
+				res.end('{errors:"error"}');
+			}else{
+				res.status(500).json({
+					errors: ['Quit failed'],
+				});
 			}
-		});
-	}
+		},
+		successCB:	function(){
+			console.log('/quit - successCB');
+			if(res.headersSent){
+				res.end('{errors:"error"}');
+			}else{
+				res.json({
+					data:	{
+						success:	true,
+					}
+				});
+			}
+		}
+	}); */
 });
 
 /**

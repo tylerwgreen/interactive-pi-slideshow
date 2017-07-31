@@ -77,6 +77,7 @@ jQuery(function($){
 							description:	v.description,
 							image:			app.params.gallery.urls.images + v.image,
 							thumb:			app.params.gallery.urls.thumbs + v.image,
+							big:			v.image,
 						});
 					});
 // console.log(dataOut);
@@ -90,14 +91,14 @@ jQuery(function($){
 						debug: true,
 						showCounter: false,
 						// showInfo: false,
-						// initialTransition: 'fade',
-						// responsive: true,
+						initialTransition: 'fade',
+						responsive: true,
 						transitionSpeed: 5000,
-						// trueFullscreen: true,
-						// fullscreenDoubleTap: false,
-						// lightbox: false,
-						// maxScaleRatio: 1,
-						// idleMode: false,
+						trueFullscreen: true,
+						fullscreenDoubleTap: false,
+						lightbox: false,
+						maxScaleRatio: 1,
+						idleMode: false,
 						swipe: 'enforced',
 						// TOUCH:	true,
 						// MOBILE:	true,
@@ -105,20 +106,10 @@ jQuery(function($){
 							var galleria = this;
 							
 							// galleria.unbind();
-							/* galleria.bind('loadfinish', function(e) {
-								if (typeof e.galleriaData.title == 'undefined') {
-									// title.hide();
-								} else {
-									// title.text(e.galleriaData.title);
-									// title.show();
-								}
-								if (typeof e.galleriaData.description == 'undefined') {
-									// description.hide();
-								} else {
-									// description.text(e.galleriaData.description);
-									// description.show();
-								}
-							}); */
+							galleria.bind('loadfinish', function(e) {
+console.log(e.galleriaData);
+								app.projector.project(e.galleriaData.big);
+							});
 						}
 					});
 				},
@@ -132,6 +123,29 @@ jQuery(function($){
 						dataSource: app.gallery.data.parse(data)
 					});
 				}
+			},
+		},
+		projector:	{
+			project:	function(fileName){
+console.log(fileName);
+				$.ajax({
+						method:		'POST',
+						url:		app.params.ajaxBase + 'projector/project/' + fileName,
+						timeout:	app.utils.getTimeoutSeconds(),
+					})
+						.done(function(data, textStatus, jqXHR){
+							console.log('app.data',	data);
+							if(app.utils.isValidJqXHR(jqXHR)){
+								// if(!app.apps.current.isPrevious(app.apps.expressions.name))
+									app.quit(true);
+							}else{
+								app.error.raise('Invalid jqXHR');
+							}
+						})
+						.fail(function(jqXHR, textStatus, errorThrown){
+app.error.raise('failed to load image');
+							app.error.raise(app.utils.getJqXHRError(jqXHR));
+						});
 			}
 		},
 		/* selection:	{

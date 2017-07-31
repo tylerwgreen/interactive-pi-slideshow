@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "#bash - Projector project start"
+# FILE=/media/pi/TYLERTHUMB1/video/puppet-people-10-secs.mp4
+# FILE=/media/pi/TYLERTHUMB1/video/puppet-people-15-secs.mp4
+# FILE=/media/pi/TYLERTHUMB1/video/puppet-people-20-secs.mp4
+FILE_DIR=/home/pi/interactive-pi-slideshow/web/img/gallery/huge/
+FILE=$FILE_DIR/$1
+# DISPLAY: 5 = HDMI, 4 = LCD
+DISPLAY=5
+#DISPLAY=4
+AUDIO_OUTPUT=local
+# AUDIO_OUTPUT=hdmi
+echo "#bash - Projector project killing playback"
+killall mpg123
+killall omxplayer
+killall omxplayer.bin
+echo "#bash - Projector projecting $FILE"
+omxplayer -o $AUDIO_OUTPUT --display=$DISPLAY $FILE
+echo "#bash - Projector project end"
