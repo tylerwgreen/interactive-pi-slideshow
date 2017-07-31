@@ -2,38 +2,17 @@
 
 # autorun from ~/.config/lxsession/LXDE-pi/autostart
 
-APPS=/home/pi/interactive-pi-slideshow/apps/
+APP_DIR=/home/pi/interactive-pi-slideshow/
 LOG=/logs/startup.log
 NOW=$(date +"%y-%m-%d %H:%M:%S")
-
-# Apps (directory names)
-#APP=video-recorder
-APP=media-player
-
-STARTUP=$APPS$APP/bin/startup
-LOGFILE=$APPS$APP$LOG
+LOGFILE=$APP_DIR$LOG
 
 # log
-echo "$NOW|executing: $STARTUP" | tee -a $LOGFILE
-
-# run app startup
-#$STARTUP
+echo "$NOW|executing: startup" | tee -a $LOGFILE
 
 # open terminal and run command for app startup
-lxterminal -e $STARTUP
+#lxterminal -e $STARTUP
 
-
-
-
-
-
-
-
-
-
-
-#!/bin/bash
-APP_DIR=/home/pi/saguaro-man/apps/media-player
 echo "#bash - Media player startup killing node"
 killall node
 echo "#bash - Media player startup killing chrome"
@@ -48,4 +27,4 @@ echo "#bash - Media player startup starting node"
 node $APP_DIR/app.js &
 echo "#bash - Media player startup starting chrome"
 echo "#bash - Media player startup please wait..."
-chromium-browser -incognito --kiosk 127.0.0.1:5000
+chromium-browser -incognito --kiosk --touch-events=enabled 127.0.0.1:5000
