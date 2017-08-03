@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "#bash - Quit playback start"
+#APP_DIR=/home/pi/saguaro-man/apps/media-player
+echo "#bash - Quit playback killing mpg123"
+killall mpg123
+echo "#bash - Quit playback killing omxplayer"
+killall omxplayer
+killall omxplayer.bin
+echo "#bash - Quit playback end"

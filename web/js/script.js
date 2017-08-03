@@ -2,7 +2,9 @@ jQuery(function($){
 	var app	= {
 		debug:	true,
 		params:	{
-			ajaxBase:	'http://127.0.0.1:5000/',
+			// ajaxBase:	'http://127.0.0.1:5000/',
+			// ajaxBase:	'http://192.168.0.10:5000/',
+			ajaxBase:	'/',
 			timeoutMins:	61, // +1 from server timeout
 			gallery:	{
 				elementID:	'#galleria',
@@ -75,9 +77,9 @@ jQuery(function($){
 							id:				k,
 							title:			v.title,
 							description:	v.description,
-							image:			app.params.gallery.urls.images + v.image,
-							thumb:			app.params.gallery.urls.thumbs + v.image,
-							big:			v.image,
+							image:			app.params.gallery.urls.images + v.fileName + '.jpg',
+							thumb:			app.params.gallery.urls.thumbs + v.fileName + '.jpg',
+							projectionFile:	v.fileName + '.mp4',
 						});
 					});
 // console.log(dataOut);
@@ -108,7 +110,7 @@ jQuery(function($){
 							// galleria.unbind();
 							galleria.bind('loadfinish', function(e) {
 console.log(e.galleriaData);
-								app.projector.project(e.galleriaData.big);
+								app.projector.project(e.galleriaData.projectionFile);
 							});
 						}
 					});
@@ -128,6 +130,8 @@ console.log(e.galleriaData);
 		projector:	{
 			project:	function(fileName){
 console.log(fileName);
+console.log(app.params.ajaxBase + 'projector/project/' + fileName);
+// return;
 				$.ajax({
 						method:		'POST',
 						url:		app.params.ajaxBase + 'projector/project/' + fileName,
@@ -137,7 +141,7 @@ console.log(fileName);
 							console.log('app.data',	data);
 							if(app.utils.isValidJqXHR(jqXHR)){
 								// if(!app.apps.current.isPrevious(app.apps.expressions.name))
-									app.quit(true);
+									// app.quit(true);
 							}else{
 								app.error.raise('Invalid jqXHR');
 							}

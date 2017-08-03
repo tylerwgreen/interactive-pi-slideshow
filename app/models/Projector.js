@@ -71,11 +71,11 @@ var Projector		= {
 				if(error){
 					// console.log('Projector.dustyLoops.play.error.error');
 					// console.log(error);
-					console.log('Projector.dustyLoops.play.error.stderr');
+					console.log('Projector.project.error.stderr');
 					console.log(stderr);
 					params.errorCB(error);
 				}else{
-					console.log('Projector.dustyLoops.play.success.stdout');
+					console.log('Projector.project.success.stdout');
 					console.log(stdout);
 					params.successCB();
 				}

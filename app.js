@@ -66,11 +66,11 @@ app.use(morgan(logger.format, logger.options))
 // timeout
 app.use(timeout(getTimeoutSeconds()));
 // mobile Usear Agent to force touch controls
-app.use(function(req, res, next){
+/* app.use(function(req, res, next){
 	// console.log('mobile header');
 	res.header('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1')
 	next();
-});
+}); */
 // !!! must be last middleware !!!
 app.use(haltOnTimedout);
 function haltOnTimedout(req, res, next){
@@ -94,7 +94,13 @@ app.get('/', function(req, res, next){
 });
 /** Projector */
 app.post('/projector/project/:fileName', function(req, res, next){
+// app.all('/projector/project/', function(req, res, next){
 	console.log('/projector/project/:' + req.params.fileName);
+/* res.json({
+	data:	{
+		success:	true,
+	}
+}); */
 	Projector.project({
 		fileName:	req.params.fileName,
 		errorCB:	function(error){
@@ -119,11 +125,6 @@ app.post('/projector/project/:fileName', function(req, res, next){
 					}
 				});
 			}
-		}
-	});
-	res.json({
-		data:	{
-			success:	true,
 		}
 	});
 });
@@ -218,8 +219,14 @@ app.post('/projector/project/:fileName', function(req, res, next){
 	}
 }); */
 app.post('/quit', function(req, res, next){
+// app.all('/quit', function(req, res, next){
 	console.log('/quit');
 	// console.log(req.params);
+/* res.json({
+	data:	{
+		success:	true,
+	}
+}); */
 	/* Projector.quit({
 		errorCB:	function(error){
 			console.log('/quit - errorCB');
