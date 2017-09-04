@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "#bash - Audio play audio start"
+FILE_DIR=/home/pi/interactive-pi-slideshow/assets/audio/field-recordings
+FILE=$FILE_DIR/$1
+AUDIO_OUTPUT=local
+#AUDIO_OUTPUT=hdmi
+echo "#bash - Audio play killing playback"
+killall mpg123
+#killall mpg123.bin
+echo "#bash - Audio play playing $FILE"
+mpg123 $FILE
+echo "#bash - Audio play end"

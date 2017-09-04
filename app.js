@@ -19,7 +19,10 @@ var paths	= {
 /**
  * Load models
  */
-var Projector		= require(path.join(__dirname, paths.models, 'Projector'));
+var Projector	= require(path.join(__dirname, paths.models, 'Projector'));
+var Audio		= require(path.join(__dirname, paths.models, 'Audio'));
+Audio.init();
+// return;
 
 // app settings
 /**
@@ -65,7 +68,7 @@ logger.options.stream = accessLogStream;
 app.use(morgan(logger.format, logger.options))
 // timeout
 app.use(timeout(getTimeoutSeconds()));
-// mobile Usear Agent to force touch controls
+// mobile User Agent to force touch controls
 /* app.use(function(req, res, next){
 	// console.log('mobile header');
 	res.header('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1')
@@ -128,96 +131,6 @@ app.post('/projector/project/:fileName', function(req, res, next){
 		}
 	});
 });
-/** Puppet People */
-/* app.post('/apps/puppet-people/play', function(req, res, next){
-	console.log('/apps/puppet-people/play');
-	// console.log(req.params);
-	if(styling){
-		setTimeout(function(){
-			console.log('/apps/puppet-people - success');
-			if(res.headersSent){
-				res.end('{errors:"error"}');
-			}else{
-				res.json({
-					data:	{
-						success:	true,
-					}
-				});
-			}
-		}, 5000);
-	}else{
-		MediaPlayer.puppetPeople.play({
-			errorCB:	function(error){
-				console.log('/apps/puppet-people/play - errorCB');
-				console.log(error);
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.status(500).json({
-						errors: ['Puppet People play failed'],
-					});
-				}
-			},
-			successCB:	function(){
-				console.log('/apps/puppet-people/play - successCB');
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.json({
-						data:	{
-							success:	true,
-						}
-					});
-				}
-			}
-		});
-	}
-}); */
-/** Dusty Loops */
-/* app.post('/apps/dusty-loops/play', function(req, res, next){
-	console.log('/apps/dusty-loops/play');
-	// console.log(req.params);
-	if(styling){
-		setTimeout(function(){
-			console.log('/apps/dusty-loops - success');
-			if(res.headersSent){
-				res.end('{errors:"error"}');
-			}else{
-				res.json({
-					data:	{
-						success:	true,
-					}
-				});
-			}
-		}, 5000);
-	}else{
-		MediaPlayer.dustyLoops.play({
-			errorCB:	function(error){
-				console.log('/apps/dusty-loops/play - errorCB');
-				console.log(error);
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.status(500).json({
-						errors: ['Dusty Loops play failed'],
-					});
-				}
-			},
-			successCB:	function(){
-				console.log('/apps/dusty-loops/play - successCB');
-				if(res.headersSent){
-					res.end('{errors:"error"}');
-				}else{
-					res.json({
-						data:	{
-							success:	true,
-						}
-					});
-				}
-			}
-		});
-	}
-}); */
 app.post('/quit', function(req, res, next){
 // app.all('/quit', function(req, res, next){
 	console.log('/quit');

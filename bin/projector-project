@@ -8,7 +8,7 @@ DISPLAY=5
 AUDIO_OUTPUT=local
 # AUDIO_OUTPUT=hdmi
 echo "#bash - Projector project killing playback"
-killall mpg123
+# killall mpg123
 killall omxplayer
 killall omxplayer.bin
 echo "#bash - Projector projecting $FILE"

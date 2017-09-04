@@ -7,6 +7,9 @@ jQuery(function($){
 			ajaxBase:	'/',
 			timeoutMins:	61, // +1 from server timeout
 			gallery:	{
+				timer:		{
+					duration: 10,	// seconds
+				},
 				elementID:	'#galleria',
 				urls:	{
 					theme:	'js/galleria-1.5.7/galleria/themes/classic/galleria.classic.js',
@@ -19,14 +22,11 @@ jQuery(function($){
 		init:	function(){
 			console.log('app.init');
 			app.gallery.init();
-			// app.selection.init();
-			// app.info.init();
 			app.error.init();
-			// app.selection.events.btnToggle(app.selection.ui.selectionBtnExpressions);
-			// app.apps.expressions.init();
 		},
 		quit:	function(reset){
 			console.log('app.quit');
+			app.gallery.timer.quit();
 			// stop server processes
 			$.ajax({
 				method:		'POST',
@@ -57,7 +57,7 @@ jQuery(function($){
 				console.log('app.gallery.init');
 				app.gallery.galleria.configure();
 				app.gallery.galleria.loadTheme();
-				app.gallery.data.load(); // loads data, parses data and runs galleria
+				app.gallery.data.load(); // loads data, parses data, runs galleria and starts timer
 			},
 			data:	{
 				load:	function(){
@@ -82,11 +82,12 @@ jQuery(function($){
 							projectionFile:	v.fileName + '.mp4',
 						});
 					});
-// console.log(dataOut);
+					// console.log(dataOut);
 					return dataOut;
 				},
 			},
 			galleria:	{
+				galleria:	null,
 				configure:	function(){
 					console.log('app.gallery.galleria.configure');
 					Galleria.configure({
@@ -106,11 +107,15 @@ jQuery(function($){
 						// MOBILE:	true,
 						extend: function(options) {
 							var galleria = this;
-							
+							app.gallery.galleria.galleria = galleria;
 							// galleria.unbind();
 							galleria.bind('loadfinish', function(e) {
-console.log(e.galleriaData);
+								console.log(e.galleriaData);
 								app.projector.project(e.galleriaData.projectionFile);
+							});
+							galleria.bind('image', function(e) {
+								console.log('galleria.bind.image');
+								app.gallery.timer.reset();
 							});
 						}
 					});
@@ -124,14 +129,57 @@ console.log(e.galleriaData);
 					Galleria.run(app.params.gallery.elementID, {
 						dataSource: app.gallery.data.parse(data)
 					});
+					app.gallery.timer.init();
+				},
+				nextSlide:	function(){
+					console.log('app.gallery.galleria.nextSlide');
+					app.gallery.galleria.galleria.next(); // need to reset here if the slideshow is changed manually
+				}
+			},
+			timer:	{
+				elapsed:		0,	// seconds
+				stepper:		null,
+				stepInterval:	100,
+				interval:		null,
+				init:		function(){
+					console.log('app.gallery.timer.init');
+					this.ui.init();
+					this.interval = setInterval(this.stepperCB, this.stepInterval);
+				},
+				stepperCB:	function(){
+					// console.log('app.gallery.timer.stepperCB');
+					app.gallery.timer.elapsed += app.gallery.timer.stepInterval;
+					var percentComplete = (app.gallery.timer.elapsed) / (app.params.gallery.timer.duration * 10);
+					app.gallery.timer.ui.setBarWidth(percentComplete);
+					if(app.gallery.timer.elapsed / 1000 >= app.params.gallery.timer.duration){
+						app.gallery.galleria.nextSlide();
+						app.gallery.timer.reset();	// need to reset here or stepper will try to step again while loading image
+					}
+				},
+				reset:		function(){
+					console.log('app.gallery.timer.reset');
+					app.gallery.timer.elapsed = 0;
+					app.gallery.timer.ui.setBarWidth(0);
+				},
+				quit:		function(){
+					clearInterval(this.interval);
+				},
+				ui:	{
+					bar:	null,
+					init:	function(){
+						console.log('app.gallery.timer.ui.init');
+						this.bar = $('#timer-bar');
+						this.setBarWidth(0);
+					},
+					setBarWidth:	function(width){
+						this.bar.width(width + '%');
+					}
 				}
 			},
 		},
 		projector:	{
 			project:	function(fileName){
-console.log(fileName);
-console.log(app.params.ajaxBase + 'projector/project/' + fileName);
-// return;
+				console.log(app.params.ajaxBase + 'projector/project/' + fileName);
 				$.ajax({
 						method:		'POST',
 						url:		app.params.ajaxBase + 'projector/project/' + fileName,
@@ -147,219 +195,11 @@ console.log(app.params.ajaxBase + 'projector/project/' + fileName);
 							}
 						})
 						.fail(function(jqXHR, textStatus, errorThrown){
-app.error.raise('failed to load image');
+							// app.error.raise('failed to load image');
 							app.error.raise(app.utils.getJqXHRError(jqXHR));
 						});
 			}
 		},
-		/* selection:	{
-			init:	function(){
-				console.log('app.selection.init');
-				app.selection.ui.init();
-			},
-			ui:	{
-				selectionBtnExpressions:	null,
-				selectionBtnPuppetPeople:	null,
-				selectionBtnDustyLoops:		null,
-				infoBtn:					null,
-				init:	function(){
-					console.log('app.selection.ui.init');
-					this.selectionBtnExpressions	= $('#selection-btn-expressions')
-						.on('click', app.selection.events.selectionBtnExpressionsClick);
-					this.selectionBtnPuppetPeople	= $('#selection-btn-puppet-people')
-						.on('click', app.selection.events.selectionBtnPuppetPeopleClick);
-					this.selectionBtnDustyLoops		= $('#selection-btn-dusty-loops')
-						.on('click', app.selection.events.selectionBtnDustyLoopsClick);
-					this.infoBtn					= $('#info-btn')
-						.on('click', app.selection.events.showInfo);
-				},
-				btnToggle:	function(btn){
-					console.log('app.selection.ui.btnToggle');
-					this.selectionBtnExpressions.removeClass('active');
-					this.selectionBtnPuppetPeople.removeClass('active');
-					this.selectionBtnDustyLoops.removeClass('active');
-					if(typeof btn.currentTarget !== 'undefined')
-						$(btn.currentTarget).addClass('active');
-					else
-						btn.addClass('active');
-				}
-			},
-			events:	{
-				selectionBtnExpressionsClick:	function(event){
-					console.log('app.selection.events.selectionBtnExpressionsClick');
-					app.utils.cancelDefaultEvent(event);
-					app.selection.ui.btnToggle(event);
-					app.apps.expressions.init();
-				},
-				selectionBtnPuppetPeopleClick:	function(event){
-					console.log('app.selection.events.selectionBtnPuppetPeopleClick');
-					app.utils.cancelDefaultEvent(event);
-					app.selection.ui.btnToggle(event);
-					app.apps.puppetPeople.init();
-				},
-				selectionBtnDustyLoopsClick:	function(event){
-					console.log('app.selection.events.selectionBtnDustyLoopsClick');
-					app.utils.cancelDefaultEvent(event);
-					app.selection.ui.btnToggle(event);
-					app.apps.dustyLoops.init();
-				},
-				showInfo:				function(event){
-					console.log('app.selection.events.showInfo');
-					app.utils.cancelDefaultEvent(event);
-					app.info.events.show();
-				},
-				btnToggle:	function(btn){
-					console.log('app.selection.events.btnToggle', btn);
-					app.selection.ui.btnToggle(btn);
-				}
-			}
-		}, */
-		/* info:		{
-			init:	function(){
-				console.log('app.info.init');
-				app.info.ui.init();
-			},
-			ui:	{
-				infoWrap:	null,
-				backBtn:	null,
-				init:	function(){
-					console.log('app.info.ui.init');
-					this.infoWrap	= $('#info-wrap');
-					this.backBtn	= $('#info-back-btn')
-						.on('click', app.info.events.back);
-				},
-				msg:	{
-					update:	function(msg){
-						console.log('app.info.ui.msg.update', msg);
-						app.info.ui.infoMsg.text(msg);
-					},
-				},
-				hide:	function(){
-					console.log('app.info.ui.hide');
-					this.infoWrap.removeClass('visible');
-				},
-				show:	function(){
-					console.log('app.info.ui.show');
-					this.infoWrap.addClass('visible');
-				},
-			},
-			events:	{
-				show:	function(){
-					console.log('app.info.events.show');
-					app.info.ui.show();
-				},
-				hide:	function(){
-					console.log('app.info.events.hide');
-					app.info.ui.hide();
-				},
-				back:	function(event){
-					console.log('app.info.events.back');
-					app.utils.cancelDefaultEvent(event);
-					app.info.events.hide();
-				}
-			}
-		}, */
-		/* apps:		{
-			current:		{
-				current:	null,
-				previous:	null,
-				set:	function(app){
-					console.log('app.apps.current.set', app);
-					this.previous	= this.current;
-					this.current	= app;
-				},
-				get:	function(){
-					console.log('app.apps.current.get', this.current);
-					return this.current;
-				},
-				isPrevious:	function(app){
-					console.log('app.apps.current.isPrevious', this.previous);
-					return app == this.previous	? true : false;
-				},
-				isCurrent:	function(app){
-					console.log('app.apps.current.isCurrent', this.current);
-					return app == this.current	? true : false;
-				}
-			},
-			expressions:	{
-				name:	'expressions',
-				init:	function(){
-					console.log('app.apps.expressions.init');
-					if(app.apps.current.isCurrent(app.apps.expressions.name))
-						return;
-					app.apps.current.set(app.apps.expressions.name);
-					$.ajax({
-						method:		'POST',
-						url:		app.params.ajaxBase + 'apps/expressions/play',
-						timeout:	app.utils.getTimeoutSeconds(),
-					})
-						.done(function(data, textStatus, jqXHR){
-							console.log('app.data',	data);
-							if(app.utils.isValidJqXHR(jqXHR)){
-								if(!app.apps.current.isPrevious(app.apps.expressions.name))
-									app.quit(true);
-							}else{
-								app.error.raise('Invalid jqXHR');
-							}
-						})
-						.fail(function(jqXHR, textStatus, errorThrown){
-							app.error.raise(app.utils.getJqXHRError(jqXHR));
-						});
-				},
-			},
-			puppetPeople:	{
-				name:	'puppetPeople',
-				init:	function(){
-					console.log('app.apps.puppetPeople.init');
-					if(app.apps.current.isCurrent(app.apps.puppetPeople.name))
-						return;
-					app.apps.current.set(app.apps.puppetPeople.name);
-					$.ajax({
-						method:		'POST',
-						url:		app.params.ajaxBase + 'apps/puppet-people/play',
-						timeout:	app.utils.getTimeoutSeconds(),
-					})
-						.done(function(data, textStatus, jqXHR){
-							console.log('app.data',	data);
-							if(app.utils.isValidJqXHR(jqXHR)){
-								if(!app.apps.current.isPrevious(app.apps.puppetPeople.name))
-									app.quit(true);
-							}else{
-								app.error.raise('Invalid jqXHR');
-							}
-						})
-						.fail(function(jqXHR, textStatus, errorThrown){
-							app.error.raise(app.utils.getJqXHRError(jqXHR));
-						});
-				},
-			},
-			dustyLoops:		{
-				name:	'dustyLoops',
-				init:	function(){
-					console.log('app.apps.dustyLoops.init');
-					if(app.apps.current.isCurrent(app.apps.dustyLoops.name))
-						return;
-					app.apps.current.set(app.apps.dustyLoops.name);
-					$.ajax({
-						method:		'POST',
-						url:		app.params.ajaxBase + 'apps/dusty-loops/play',
-						timeout:	app.utils.getTimeoutSeconds(),
-					})
-						.done(function(data, textStatus, jqXHR){
-							console.log('app.data',	data);
-							if(app.utils.isValidJqXHR(jqXHR)){
-								if(!app.apps.current.isPrevious(app.apps.dustyLoops.name))
-									app.quit(true);
-							}else{
-								app.error.raise('Invalid jqXHR');
-							}
-						})
-						.fail(function(jqXHR, textStatus, errorThrown){
-							app.error.raise(app.utils.getJqXHRError(jqXHR));
-						});
-				},
-			}
-		},*/
 		error:		{
 			init:	function(){
 				console.log('app.error.init');
