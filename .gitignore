@@ -31,5 +31,6 @@ node_modules
 npm-debug.log
 
 # TWG MISC
-#/assets/video
-#/assets/audio/cody-loops
+/assets/audio/field-recordings
+/assets/video/gallery
+/web/img/gallery
