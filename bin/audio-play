@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "#bash - Audio play audio start"
-FILE_DIR=/home/pi/interactive-pi-slideshow/assets/audio/field-recordings
+FILE_DIR=$(pwd)/../assets/audio/field-recordings
 FILE=$FILE_DIR/$1
 AUDIO_OUTPUT=local
 #AUDIO_OUTPUT=hdmi

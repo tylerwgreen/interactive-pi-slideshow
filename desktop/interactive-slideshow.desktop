@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Interactive Slideshow
 Comment=Interactive Slideshow
-Icon=/home/pi/interactive-pi-slideshow/assets/icon/interactive-slideshow-icon.png
-Exec=/home/pi/interactive-pi-slideshow/bin/startup
+Icon=/home/pi/projects/rpi-interactive-slideshow/assets/icon/interactive-slideshow-icon.png
+Exec=/home/pi/projects/rpi-interactive-slideshow/bin/startup
 Type=Application
 Encoding=UTF-8
 Terminal=true
