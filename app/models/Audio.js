@@ -3,11 +3,14 @@ var fs			= require('fs');
 
 var Audio		= {
 	params:	{
-		binDir:		'/home/pi/interactive-pi-slideshow/bin/',
-		audioDir:	'/home/pi/interactive-pi-slideshow/assets/audio/field-recordings/',
+		binDir:		null,
+		audioDir:	null,
 	},
-	init:	function(){
-		console.log('Audio.init');
+	init:	function(params){
+		console.log('Audio.init', params);
+		// config params
+		this.params.binDir = params.binDir;
+		this.params.audioDir = params.audioDir;
 		// test randomization
 		/* this.files.init(function(){
 			var its	= 25;
@@ -21,7 +24,7 @@ var Audio		= {
 		console.log('Audio.playRandom');
 		child	= execFile(
 			Audio.params.binDir + 'audio-play',
-			[Audio.files.random()],
+			[Audio.params.audioDir + Audio.files.random()],
 			function(error, stdout, stderr){
 				if(error){
 					console.log('Audio.playRandom.error.stderr');

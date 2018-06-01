@@ -14,14 +14,22 @@ var paths	= {
 	views:	'/app/views/',
 	logs:	'/logs/',
 	web:	'/web/',
+	bin:	'/bin/',
+	audio:	'/assets/audio/field-recordings/',
 };
 
 /**
- * Load models
+ * Load and init models
  */
 var Projector	= require(path.join(__dirname, paths.models, 'Projector'));
 var Audio		= require(path.join(__dirname, paths.models, 'Audio'));
-Audio.init();
+Projector.init({
+	binDir: path.join(__dirname, paths.bin),
+});
+Audio.init({
+	binDir: path.join(__dirname, paths.bin),
+	audioDir: path.join(__dirname, paths.audio),
+});
 // return;
 
 // app settings

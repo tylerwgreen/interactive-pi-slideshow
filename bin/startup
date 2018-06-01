@@ -1,7 +1,6 @@
 #!/bin/bash
 
-APP_DIR=$(pwd)/../
-echo $APP_DIR
+APP_DIR=$(dirname "$0")/..
 LOG=/logs/startup.log
 NOW=$(date +"%y-%m-%d %H:%M:%S")
 LOGFILE=$APP_DIR$LOG

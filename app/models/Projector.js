@@ -3,7 +3,12 @@ var fs			= require('fs');
 
 var Projector		= {
 	params:	{
-		binDir:		'/home/pi/interactive-pi-slideshow/bin/',
+		binDir:		null,
+	},
+	init:		function(params){
+		console.log('Projector.init', params);
+		// config params
+		this.params.binDir = params.binDir;
 	},
 	quit:		function(params){
 		console.log('Projector.quit');

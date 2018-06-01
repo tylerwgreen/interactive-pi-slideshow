@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "#bash - Projector project start"
-FILE_DIR=$(pwd)/../assets/video/gallery
-FILE=$FILE_DIR/$1
+FILE=$1
 # DISPLAY: 5 = HDMI, 4 = LCD
 DISPLAY=5
 #DISPLAY=4
