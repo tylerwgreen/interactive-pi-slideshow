@@ -2,7 +2,7 @@
 Name=Slideshow
 Comment=Slideshow
 Icon=/home/pi/projects/rpi-interactive-slideshow/assets/icon/interactive-slideshow-icon.png
-Exec=/home/pi/projects/rpi-interactive-slideshow/bin/startup
+Exec=/home/pi/projects/rpi-interactive-slideshow/bin/autostart
 Type=Application
 Encoding=UTF-8
 Terminal=true
