@@ -4,11 +4,13 @@ var fs			= require('fs');
 var Projector		= {
 	params:	{
 		binDir:		null,
+		videoDir:	null,
 	},
 	init:		function(params){
 		console.log('Projector.init', params);
 		// config params
 		this.params.binDir = params.binDir;
+		this.params.videoDir = params.videoDir;
 	},
 	quit:		function(params){
 		console.log('Projector.quit');
@@ -34,7 +36,7 @@ var Projector		= {
 		console.log('Projector.project');
 		child		= execFile(
 			Projector.params.binDir + 'projector-project',
-			[params.fileName],
+			[Projector.params.videoDir + params.fileName],
 			function(error, stdout, stderr){
 				if(error){
 					// console.log('Projector.dustyLoops.play.error.error');

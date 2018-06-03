@@ -16,6 +16,7 @@ var paths	= {
 	web:	'/web/',
 	bin:	'/bin/',
 	audio:	'/assets/audio/field-recordings/',
+	video:	'/assets/video/gallery/',
 };
 
 /**
@@ -25,6 +26,7 @@ var Projector	= require(path.join(__dirname, paths.models, 'Projector'));
 var Audio		= require(path.join(__dirname, paths.models, 'Audio'));
 Projector.init({
 	binDir: path.join(__dirname, paths.bin),
+	videoDir: path.join(__dirname, paths.video),
 });
 Audio.init({
 	binDir: path.join(__dirname, paths.bin),
