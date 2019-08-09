@@ -6,10 +6,14 @@ DISPLAY=5
 #DISPLAY=4
 AUDIO_OUTPUT=local
 # AUDIO_OUTPUT=hdmi
+# ASPECT_TYPE=letterbox
+ASPECT_TYPE=fill
+# ASPECT_TYPE=stretch
 echo "#bash - Projector project killing playback"
 # killall mpg123
 killall omxplayer
 killall omxplayer.bin
 echo "#bash - Projector projecting $FILE"
-omxplayer -o $AUDIO_OUTPUT --display=$DISPLAY --loop -local --no-osd $FILE
+omxplayer -o $AUDIO_OUTPUT --display=$DISPLAY --loop -local --no-osd $FILE --aspect-mode=$ASPECT_TYPE
+# omxplayer -o $AUDIO_OUTPUT --display=$DISPLAY --loop -local --no-osd $FILE
 echo "#bash - Projector project end"

@@ -1,221 +1,113 @@
 [{
-	"title": "Arroyos 0 title",
-	"description": "Arroyos 0 description",
-	"fileName": "arroyos-00"
+	"title": "Angel Peak no.1",
+	"description": "2/2/2019; New Mexico",
+	"fileName": "landscapes-00"
 }, {
-	"title": "Arroyos 1 title",
-	"description": "Arroyos 1 description",
-	"fileName": "arroyos-01"
+	"title": "El Malpaís no.1",
+	"description": "8/3/2018; New Mexico; This was the first time I visited this area and I had no idea it would be so breathtaking. The mix of sandstone cliffs and lava rocks made for dramatic views. Following a brief downpour, the wind completely died and the lava began to sing as water dripped down and across the rocks.",
+	"fileName": "landscapes-01"
 }, {
-	"title": "Arroyos 2 title",
-	"description": "Arroyos 2 description",
-	"fileName": "arroyos-02"
+	"title": "Red River Gorge no.1",
+	"description": "9/2/2015; Kentucky",
+	"fileName": "landscapes-02"
 }, {
-	"title": "Arroyos 3 title",
-	"description": "Arroyos 3 description",
-	"fileName": "arroyos-03"
+	"title": "Cabezon Drainage",
+	"description": "New Mexico",
+	"fileName": "landscapes-03"
 }, {
-	"title": "Arroyos 4 title",
-	"description": "Arroyos 4 description",
-	"fileName": "arroyos-04"
+	"title": "Muley Point",
+	"description": "Utah",
+	"fileName": "landscapes-04"
 }, {
-	"title": "Arroyos 5 title",
-	"description": "Arroyos 5 description",
-	"fileName": "arroyos-05"
+	"title": "Sandstone Butte no.1",
+	"description": "10/19/2014; Arizona; The sun felt increasingly warm on my back as I explored this area. There are two buttes next to one another but I decided to focus on this one that had a recent rock fall. The recent scar serves as a reminder that time marches on and our world is constantly changing.",
+	"fileName": "landscapes-05"
 }, {
-	"title": "Arroyos 6 title",
-	"description": "Arroyos 6 description",
-	"fileName": "arroyos-06"
+	"title": "Long Mesa no.1",
+	"description": "10/18/2014; New Mexico; I was fascinated by this view where you could see the entire lenth of this mesa unobstructed. Most mesas I come across usually have valleys that cut into them, hills that obstruct part of them or ravines that cut into the foreground. This one is truly unique.",
+	"fileName": "landscapes-06"
 }, {
-	"title": "Arroyos 7 title",
-	"description": "Arroyos 7 description",
-	"fileName": "arroyos-07"
+	"title": "White Sands",
+	"description": "New Mexico",
+	"fileName": "landscapes-07"
 }, {
-	"title": "Arroyos 8 title",
-	"description": "Arroyos 8 description",
-	"fileName": "arroyos-08"
+	"title": "Mill Creek Lake Reflection",
+	"description": "Kentucky",
+	"fileName": "landscapes-08"
 }, {
-	"title": "Arroyos 9 title",
-	"description": "Arroyos 9 description",
-	"fileName": "arroyos-09"
+	"title": "Tsé Bitʼaʼí (Shiprock) no.2",
+	"description": "7/15/2017; New Mexico; The Navajo name for Shiprock is Tsé Bitʼaʼí meaning 'the rock with wings' or 'winged rock.' This was my first time photographing Shiprock in infrared. I made several exposures before the sun rose above the horizon but I knew the scene was not great; the clouds were too bright. Luckily, as the sun rose above the horizon and illuminated Shiprock I was able to captured a few images before the foreground became too bright.",
+	"fileName": "landscapes-09"
 }, {
-	"title": "Arroyos 10 title",
-	"description": "Arroyos 10 description",
-	"fileName": "arroyos-10"
+	"title": "Mesas no.1",
+	"description": "5/24/2014; New Mexico; Occassionally the weather forces me to photograph something I may not have considered photographing before. The road in this area becomes extremely slick when it rains. Luckily I had the foresite to drive toward a better road before I took a chance at getting stuck. I happened upon this scene as the storm worsened and was delighted with the show the clouds were performing behind these two mesas.",
+	"fileName": "landscapes-10"
 }, {
-	"title": "Arroyos 11 title",
-	"description": "Arroyos 11 description",
-	"fileName": "arroyos-11"
+	"title": "Ghost Ranch",
+	"description": "New Mexico; The home and studio of Georgia O'Keeffe, as well as the subject of many of her paintings.",
+	"fileName": "landscapes-11"
 }, {
-	"title": "Arroyos 12 title",
-	"description": "Arroyos 12 description",
-	"fileName": "arroyos-12"
+	"title": "Elephant Butte Reservoir",
+	"description": "New Mexico",
+	"fileName": "landscapes-12"
 }, {
-	"title": "Arroyos 13 title",
-	"description": "Arroyos 13 description",
-	"fileName": "arroyos-13"
+	"title": "Sandia Storm",
+	"description": "Albuquerque, New Mexico",
+	"fileName": "landscapes-13"
 }, {
-	"title": "Arroyos 14 title",
-	"description": "Arroyos 14 description",
-	"fileName": "arroyos-14"
+	"title": "Fog in the Red River Gorge",
+	"description": "9/2/2015; Kentucky",
+	"fileName": "landscapes-14"
 }, {
-	"title": "Arroyos 15 title",
-	"description": "Arroyos 15 description",
-	"fileName": "arroyos-15"
+	"title": "White Sands",
+	"description": "New Mexico",
+	"fileName": "landscapes-15"
 }, {
-	"title": "Arroyos 16 title",
-	"description": "Arroyos 16 description",
-	"fileName": "arroyos-16"
+	"title": "Twin Peaks",
+	"description": "New Mexico",
+	"fileName": "landscapes-16"
 }, {
-	"title": "Arroyos 17 title",
-	"description": "Arroyos 17 description",
-	"fileName": "arroyos-17"
+	"title": "Cabezon Peak no.3",
+	"description": "2019; New Mexico; I created a similar photograph several years ago of this same scene. The prior photo was a huge influence in developing a passion for landscapes. I enjoy this view because it feels as if there is not much between you and the peak which generates a sense of connection between you and the land.",
+	"fileName": "landscapes-17"
 }, {
-	"title": "Arroyos 18 title",
-	"description": "Arroyos 18 description",
-	"fileName": "arroyos-18"
+	"title": "El Malpaís no.2",
+	"description": "7/15/2018; New Mexico; This storm came and went throughout the day, perfect for photography. However, it often came with a lot of lightning. I don't take chances with lightning when it gets too close but I love photographing thunderstorms. The drama of the clouds transforms a scene and unleashes the raw power of nature.",
+	"fileName": "landscapes-18"
 }, {
-	"title": "Arroyos 19 title",
-	"description": "Arroyos 19 description",
-	"fileName": "arroyos-19"
+	"title": "El Capitan",
+	"description": "Texas",
+	"fileName": "landscapes-19"
 }, {
-	"title": "Arroyos 20 title",
-	"description": "Arroyos 20 description",
-	"fileName": "arroyos-20"
+	"title": "Chaco Ancestral Site no.1",
+	"description": "7/8/2018; New Mexico; Instead of seeking safety within my car, I decided to try and make a photograph at the height of this storm. I stood with an umbrella in one hand while adjusting the camera with the other. It was too windy and I felt defeated. Not long after the storm passed, the wind died and I was able to capture this scene. I can only imagine what it felt like to seek shelter from a storm within this structures walls.",
+	"fileName": "landscapes-20"
 }, {
-	"title": "Arroyos 21 title",
-	"description": "Arroyos 21 description",
-	"fileName": "arroyos-21"
+	"title": "Badlands no.3",
+	"description": "8/3/2018; New Mexico; This particular formation is about as long as a car and over six feet tall. The first time I saw it, I was in disbelief; how can something so incredible exist out in the world? This night I layed beneath the stars and watched meteors fall across the sky. Our planet is truly remarkable.",
+	"fileName": "landscapes-21"
 }, {
-	"title": "Arroyos 22 title",
-	"description": "Arroyos 22 description",
-	"fileName": "arroyos-22"
+	"title": "El Capitan in Snow",
+	"description": "Texas",
+	"fileName": "landscapes-22"
 }, {
-	"title": "Arroyos 23 title",
-	"description": "Arroyos 23 description",
-	"fileName": "arroyos-23"
+	"title": "Volcanic Peak no.1",
+	"description": "10/18/2014; New Mexico; I was chasing the edge of a storm system when I came across this scene. The clouds were moving quickly across the hillside illuminating only parts of it at a time. Although the clouds were moving quickly, there was not much wind. It was a beautiful moment, watching the shadows dance across the hillside while listening to the breeze rustling the grass.",
+	"fileName": "landscapes-23"
 }, {
-	"title": "Arroyos 24 title",
-	"description": "Arroyos 24 description",
-	"fileName": "arroyos-24"
+	"title": "Chaco Ancestral Site no.2",
+	"description": "3/24/2018; New Mexico; This was one of the more beautiful sunsets I have witnessed, the clouds on the horizon were breathtaking and I became engrossed with frantically trying to photograph this structure before the sun set. In a place such as this, it becomes clear why a culture would have such a deep respect and appreciation for the natural world.",
+	"fileName": "landscapes-24"
 }, {
-	"title": "Arroyos 25 title",
-	"description": "Arroyos 25 description",
-	"fileName": "arroyos-25"
+	"title": "Badlands no.2",
+	"description": "8/4/2018; New Mexico; I set up camp a few feet away from this area during the night. I was pleasantly surprised to wake up and see I was so close to such an amazing place I had never seen before. I find a lot of satisfaction in knowing that places still exist waiting to be discovered.",
+	"fileName": "landscapes-25"
 }, {
-	"title": "Arroyos 26 title",
-	"description": "Arroyos 26 description",
-	"fileName": "arroyos-26"
+	"title": "Badlands no.1",
+	"description": "5/5/2018; New Mexico; I was attempting to make a photograph a few feet away from this scene. It wasn't going well and I decided to move on. I didn't think much of this photo at first but it has become one of my favotires. The light is absolutely perfect for this scene and allows for a deep exploration of all the unique formations.",
+	"fileName": "landscapes-26"
 }, {
-	"title": "Arroyos 27 title",
-	"description": "Arroyos 27 description",
-	"fileName": "arroyos-27"
-}, {
-	"title": "Arroyos 28 title",
-	"description": "Arroyos 28 description",
-	"fileName": "arroyos-28"
-}, {
-	"title": "Arroyos 29 title",
-	"description": "Arroyos 29 description",
-	"fileName": "arroyos-29"
-}, {
-	"title": "Arroyos 30 title",
-	"description": "Arroyos 30 description",
-	"fileName": "arroyos-30"
-}, {
-	"title": "Arroyos 31 title",
-	"description": "Arroyos 31 description",
-	"fileName": "arroyos-31"
-}, {
-	"title": "Arroyos 32 title",
-	"description": "Arroyos 32 description",
-	"fileName": "arroyos-32"
-}, {
-	"title": "Arroyos 33 title",
-	"description": "Arroyos 33 description",
-	"fileName": "arroyos-33"
-}, {
-	"title": "Arroyos 34 title",
-	"description": "Arroyos 34 description",
-	"fileName": "arroyos-34"
-}, {
-	"title": "Arroyos 35 title",
-	"description": "Arroyos 35 description",
-	"fileName": "arroyos-35"
-}, {
-	"title": "Arroyos 36 title",
-	"description": "Arroyos 36 description",
-	"fileName": "arroyos-36"
-}, {
-	"title": "Arroyos 37 title",
-	"description": "Arroyos 37 description",
-	"fileName": "arroyos-37"
-}, {
-	"title": "Arroyos 38 title",
-	"description": "Arroyos 38 description",
-	"fileName": "arroyos-38"
-}, {
-	"title": "Arroyos 39 title",
-	"description": "Arroyos 39 description",
-	"fileName": "arroyos-39"
-}, {
-	"title": "Arroyos 40 title",
-	"description": "Arroyos 40 description",
-	"fileName": "arroyos-40"
-}, {
-	"title": "Arroyos 41 title",
-	"description": "Arroyos 41 description",
-	"fileName": "arroyos-41"
-}, {
-	"title": "Arroyos 42 title",
-	"description": "Arroyos 42 description",
-	"fileName": "arroyos-42"
-}, {
-	"title": "Arroyos 43 title",
-	"description": "Arroyos 43 description",
-	"fileName": "arroyos-43"
-}, {
-	"title": "Arroyos 44 title",
-	"description": "Arroyos 44 description",
-	"fileName": "arroyos-44"
-}, {
-	"title": "Arroyos 45 title",
-	"description": "Arroyos 45 description",
-	"fileName": "arroyos-45"
-}, {
-	"title": "Arroyos 46 title",
-	"description": "Arroyos 46 description",
-	"fileName": "arroyos-46"
-}, {
-	"title": "Arroyos 47 title",
-	"description": "Arroyos 47 description",
-	"fileName": "arroyos-47"
-}, {
-	"title": "Arroyos 48 title",
-	"description": "Arroyos 48 description",
-	"fileName": "arroyos-48"
-}, {
-	"title": "Arroyos 49 title",
-	"description": "Arroyos 49 description",
-	"fileName": "arroyos-49"
-}, {
-	"title": "Arroyos 50 title",
-	"description": "Arroyos 50 description",
-	"fileName": "arroyos-50"
-}, {
-	"title": "Arroyos 51 title",
-	"description": "Arroyos 51 description",
-	"fileName": "arroyos-51"
-}, {
-	"title": "Arroyos 52 title",
-	"description": "Arroyos 52 description",
-	"fileName": "arroyos-52"
-}, {
-	"title": "Arroyos 53 title",
-	"description": "Arroyos 53 description",
-	"fileName": "arroyos-53"
-}, {
-	"title": "Arroyos 54 title",
-	"description": "Arroyos 54 description",
-	"fileName": "arroyos-54"
+	"title": "El Capitan",
+	"description": "2019; Texas",
+	"fileName": "landscapes-27"
 }]
